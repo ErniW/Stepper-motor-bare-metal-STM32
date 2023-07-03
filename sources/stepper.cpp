@@ -27,7 +27,7 @@ void Stepper::timerInit(TIM_TypeDef* timer, int timerChannel, IRQn_Type timerInt
     _timer->CR1 &=~ TIM_CR1_CEN;
     _timer->PSC = (APBClockFreq / 1000000) - 1;
     _timer->ARR = 5000;
-    _timer->CCR1 = 5;
+    _timer->CCR1 = PULSE_LENGTH;
 
     if(_timerChannel == 1)      _timer->CCMR1 |= TIM_CCMR1_OC1M_1 | TIM_CCMR1_OC1M_2;
     else if(_timerChannel == 2) _timer->CCMR1 |= TIM_CCMR1_OC2M_1 | TIM_CCMR1_OC2M_2;
@@ -105,7 +105,7 @@ bool Stepper::setDir(bool dir){
     if(getDir() == dir) return false;
 
     _state = STEPPER_STATE_STABILIZING;
-    _waitCounter = 25;
+    _waitCounter = WAIT_TIME;
 
     if(_timerChannel == 1)      _timer->CCMR1 &=~ TIM_CCMR1_OC1M_2;
     else if(_timerChannel == 2) _timer->CCMR1 &=~ TIM_CCMR1_OC2M_2;

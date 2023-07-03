@@ -25,8 +25,8 @@ int main(){
     
     commands.push(400);
     commands.push(-400);
-    commands.push(200);
-    commands.push(-200);
+    commands.push(50);
+    commands.push(-50);
     commands.push(400);
     commands.push(-400);
       

@@ -12,6 +12,9 @@ enum {
     STEPPER_STATE_STABILIZING
 };
 
+#define WAIT_TIME       25
+#define PULSE_LENGTH    10
+
 class Stepper {
 public:
     Stepper(int stepsPerRevolution);
