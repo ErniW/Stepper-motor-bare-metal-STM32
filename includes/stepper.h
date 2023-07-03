@@ -19,8 +19,8 @@ class Stepper {
 public:
     Stepper(int stepsPerRevolution);
     void timerInit(TIM_TypeDef* timer, int timerChannel, IRQn_Type timerInt, unsigned long APBClockFreq);
-    void dirPinInit(GPIO_TypeDef* dirPort, int dirPin);
-    void sleepPinInit(GPIO_TypeDef* sleepPort, int sleepPin);
+    void setDirPin(GPIO_TypeDef* dirPort, int dirPin);
+    void setSleepPin(GPIO_TypeDef* sleepPort, int sleepPin);
     void start();
     void stop();
     void interruptHandler();

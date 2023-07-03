@@ -7,13 +7,13 @@ Stepper::Stepper(int stepsPerRevolution){
     _state = STEPPER_STATE_IDLE;
 }
 
-void Stepper::dirPinInit(GPIO_TypeDef* dirPort, int dirPin){
+void Stepper::setDirPin(GPIO_TypeDef* dirPort, int dirPin){
     _dirPort = dirPort;
     _dirPin = dirPin;
     _dirPort->MODER |= 1 << _dirPin * 2;
 }
 
-void Stepper::sleepPinInit(GPIO_TypeDef* sleepPort, int sleepPin){
+void Stepper::setSleepPin(GPIO_TypeDef* sleepPort, int sleepPin){
     _sleepPort = sleepPort;
     _sleepPin = sleepPin;
     _sleepPort->MODER |= 1 << _dirPin * 2;

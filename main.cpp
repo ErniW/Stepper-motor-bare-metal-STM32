@@ -19,8 +19,8 @@ int main(){
     GPIOA->MODER |= STEP_PIN_AF_MODE;
 
     motor.timerInit(TIM2, 1, TIM2_IRQn, 16000000);
-    motor.dirPinInit(GPIOA, 9);
-    motor.sleepPinInit(GPIOA, 8);
+    motor.setDirPin(GPIOA, 9);
+    motor.setSleepPin(GPIOA, 8);
     motor.setSpeed(150);
     
     commands.push(400);
