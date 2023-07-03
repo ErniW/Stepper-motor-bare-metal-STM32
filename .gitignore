@@ -1,0 +1,3 @@
+/build/stepper_motor.*
+/STLink
+main_backup.c
