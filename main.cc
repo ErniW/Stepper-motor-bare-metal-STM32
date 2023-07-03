@@ -9,26 +9,20 @@
 #define STEP_PIN_AF1        (1 << 20)
 
 Stepper motor(400);
-Queue commands(10);
+Queue   commands(10);
 
 int main(){
-    RCC->AHB1ENR &=~ RCC_AHB1ENR_GPIOAEN;
-     RCC->APB1ENR &=~ RCC_APB1ENR_TIM2EN;
-     RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
-     RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
+    RCC->AHB1ENR |= RCC_AHB1ENR_GPIOAEN;
+    RCC->APB1ENR |= RCC_APB1ENR_TIM2EN;
 
-
-    motor.dirPinInit(GPIOA, 9);
-    motor.sleepPinInit(GPIOA, 6);
-    motor.timerInit(TIM2, 1, TIM2_IRQn, 16000000);
-    motor.setSpeed(150);
-
-   
-    
     GPIOA->AFR[0] |= STEP_PIN_AF1;
     GPIOA->MODER |= STEP_PIN_AF_MODE;
+
+    motor.timerInit(TIM2, 1, TIM2_IRQn, 16000000);
+    motor.dirPinInit(GPIOA, 9);
+    motor.sleepPinInit(GPIOA, 8);
+    motor.setSpeed(150);
     
-     //commands.push(-1);
     commands.push(400);
     commands.push(-400);
     commands.push(200);
@@ -48,12 +42,15 @@ int main(){
                 else{
                     motor.sleep();
                 }
-                break;
+                
+            break;
+
             case STEPPER_STATE_SLEEPING:
                 if(!commands.isEmpty()){
                     motor.wakeup();
                 }
-                break;
+                
+            break;
         }
         
     }

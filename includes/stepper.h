@@ -22,7 +22,7 @@ public:
     void stop();
     void interruptHandler();
     void nextCommand(long long steps);
-    void setDir(bool dir);
+    bool setDir(bool dir);
     void setSpeed(int speed);
     bool getDir();
     int getSpeed();
@@ -34,8 +34,8 @@ private:
     int _stepsPerRevolution;
     int _speed;
     volatile int _state;
-    volatile long long _position;
-    volatile long long _stepsRemaining;
+    volatile long long _position = 0;
+    volatile long long _stepsRemaining = 0;
     volatile int _waitCounter;
     TIM_TypeDef* _timer;
     int _timerChannel;
