@@ -8,9 +8,9 @@ LINKERSCRIPT = STM32F446RE/STM32F446RETX_FLASH.ld
 CMSIS_INCLUDES_DIR = C:/Users/ernes/STM32Cube/Repository/STM32Cube_FW_F4_V1.26.1/Drivers/CMSIS/Include
 STLINK_DIR = stlink/bin
 
-SRCS = main.cc
-SRCS += sources/stepper.cc
-SRCS += sources/queue.cc
+SRCS = main.cpp
+SRCS += sources/stepper.cpp
+SRCS += sources/queue.cpp
 SRCS += $(STARTUP)
 SRCS += $(SYSTEM)
 
