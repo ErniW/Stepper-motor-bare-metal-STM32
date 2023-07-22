@@ -23,6 +23,7 @@ public:
     void setSleepPin(GPIO_TypeDef* sleepPort, int sleepPin);
     void start();
     void stop();
+    void enableInterrupt();
     void interruptHandler();
     void nextCommand(long long steps);
     bool setDir(bool dir);

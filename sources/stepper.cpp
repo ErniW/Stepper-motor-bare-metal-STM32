@@ -34,9 +34,13 @@ void Stepper::timerInit(TIM_TypeDef* timer, int timerChannel, IRQn_Type timerInt
     else if(_timerChannel == 3) _timer->CCMR2 |= TIM_CCMR2_OC3M_1 | TIM_CCMR2_OC3M_2;
     else if(_timerChannel == 4) _timer->CCMR2 |= TIM_CCMR2_OC4M_1 | TIM_CCMR2_OC4M_2;
     
+    _timer->SR = 0;
     _timer->DIER |= 1 << _timerChannel;
     _timer->CR1 |= TIM_CR1_CEN;
 
+}
+
+void Stepper::enableInterrupt(){
     NVIC_EnableIRQ(_timerInt);
 }
 

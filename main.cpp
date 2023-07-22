@@ -22,6 +22,7 @@ int main(){
     motor.setDirPin(GPIOA, 9);
     motor.setSleepPin(GPIOA, 8);
     motor.setSpeed(150);
+    motor.enableInterrupt();
     
     commands.push(400);
     commands.push(-400);
